@@ -1,71 +1,69 @@
-🚀 Key Features by User Role
+# StudySpark 🎓
+**A Hybrid Learning Management System (LMS) for UiTM Kampus Arau**
 
-👨‍🎓 Student Features
-    Learning Ecosystem: Access course materials, view academic calendars, and track study duration.
-    Gamified Progress: A Leaderboard visualizes performance (quiz scores + material views) using interactive bar charts.
-    Engagement Tools: Participate in Quizzes, submit Assignments, and interact via Discussion Forums or Private Chat.
-    Personalized Organization: Use the "Backpack" feature to store and organize materials across all enrolled courses in one place.
-    Campus Information: Quick access to UiTM Arau directories, campus history, and developer profiles.
+StudySpark is a comprehensive learning platform built with a hybrid database architecture. It leverages **MySQL** for structured user data and **MongoDB** for high-frequency activity logging and flexible content management.
 
-👨‍🏫 Instructor Features
-    Content Management: Create and organize learning materials, assignments, and timed quizzes (Multiple Choice/True-False).
-    Student Monitoring: Track student study time and monitor course-wide progress via the leaderboard.
-    Communication: Post course announcements and manage real-time Chat Rooms (including moderation capabilities).
-    Calendar Management: Add, edit, or remove exam dates and deadlines on the academic calendar.
+---
 
-🔑 Administrator Features
-    System Governance: Manage the core hierarchy (Faculties, Semesters, Classes, and Courses).
-    User Management: Full CRUD (Create, Read, Update, Delete) control over Student, Teacher, and Admin accounts.
-    Audit Logs: Monitor security with Admin Login Logs and Activity Reports.
-    Content Authority: Manage global system content, including the University's mission, vision, and directories.
+## 🚀 Key Features by User Role
 
-🚀 Import databases
+### 👨‍🎓 Student Portal
+* **Learning Ecosystem:** Access lecture notes, reading materials, and view academic calendars.
+* **Gamified Progress:** Visualize your rank on the **Leaderboard** based on quiz scores and material engagement.
+* **Engagement Tools:** Participate in real-time **Quizzes**, submit **Assignments**, and interact via **Discussion Forums** or **Chat Rooms**.
+* **The Backpack:** A centralized space to organize and store materials from all enrolled courses.
+* **Campus Directory:** Instant access to UiTM Arau department contacts and university history.
 
-1. Import MySQL Database (XAMPP)
+### 👨‍🏫 Instructor Portal
+* **Content Management:** Upload notes and design custom **Timed Quizzes** (Multiple Choice / True-False).
+* **Learning Analytics:** Monitor student study duration and track course-wide performance via the leaderboard.
+* **Communication Hub:** Post announcements and moderate real-time course **Chat Rooms**.
+* **Schedule Authority:** Manage exam dates and assignment deadlines on the academic calendar.
 
-    Start XAMPP: Open the XAMPP Control Panel and click Start for both Apache and MySQL.
-    Access phpMyAdmin: Open your browser and go to http://localhost/phpmyadmin/.
-    Create Database: * Click New on the left sidebar.
-    Database name: studyspark
-    Click Create.
-    Import SQL File:
-    Click on the studyspark database you just created.
-    Click the Import tab at the top.
-    Click Choose File and select database/studyspark.sql from your project folder.
-    Scroll down and click Go (or Import).
+### 🔑 Administrator Portal
+* **System Governance:** Manage Faculties, Semesters, Classes, and Courses.
+* **User Management:** Full CRUD control over Student, Teacher, and Admin accounts.
+* **Security & Auditing:** Monitor **Login Logs** and **Activity Reports** for system integrity.
+* **Content Authority:** Manage global university information (Mission, Vision, and Directories).
 
-2. Import MongoDB Database
+---
 
-    Option A: Using MongoDB Compass (Easiest)
-        Connect: Open MongoDB Compass and connect to your local instance.
-        Create Database: Click the + (plus icon) to create a database named studyspark.
-        Create Collection: Add a collection (e.g., study_sessions).
-        Import JSON:
-        Click into the collection.
-        Click Add Data > Import File.
-        Select your .json file from your project's /database folder.
-        Ensure the format is set to JSON and click Import.
+## 🛠️ Installation & Database Setup
 
-    Option B: Using Command Line (Fastest) If you have MongoDB Database Tools installed, run this in your terminal: 
-        Bash
-        mongoimport --db studyspark --collection activity_logs --file ./database/studyspark.study_sessions.json --jsonArray
+### 1. Import MySQL Database (XAMPP)
 
-🚀 URL Entry Points
+1.  **Start XAMPP:** Open the XAMPP Control Panel and start **Apache** and **MySQL**.
+2.  **Access phpMyAdmin:** Go to [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/).
+3.  **Create Database:** Click **New** and name it `studyspark`.
+4.  **Import SQL:**
+    * Select the `studyspark` database.
+    * Click the **Import** tab.
+    * Choose `database/studyspark.sql` from your project folder and click **Go**.
 
-Student 
-    http://localhost/studyspark/src/index.php
+### 2. Import MongoDB Database
 
-Instructor
-    http://localhost/studyspark/src/index.php
+* **Option A: MongoDB Compass (Easiest)**
+    1.  Connect to your local instance and create a database named `studyspark`.
+    2.  Create a collection (e.g., `study_sessions`).
+    3.  Click **Add Data > Import File** and select your `.json` file from the `/database` folder.
+* **Option B: CLI (Fastest)**
+    ```bash
+    mongoimport --db studyspark --collection study_sessions --file ./database/studyspark.study_sessions.json --jsonArray
+    ```
 
-Administrator
-    http://localhost/studyspark/src/admin/index.php
+---
 
-🔐 Login Credentials
+## 🔑 Access & Credentials
 
-To find the login details for testing, please refer to the student, teacher and users tables within the studyspark.sql file:
+### URL Entry Points
+| Role | URL Path |
+| :--- | :--- |
+| **Student** | `http://localhost/studyspark/src/index.php` |
+| **Instructor** | `http://localhost/studyspark/src/index.php` |
+| **Admin** | `http://localhost/studyspark/src/admin/index.php` |
 
-    Open phpMyAdmin.
-    Navigate to the studyspark database.
-    Browse the student table to find Student and teacher table for Instructor username/password.
-    Browse the users table for Administrative access.
+### Login Details
+To retrieve test credentials, browse the following tables in **phpMyAdmin**:
+* **Students:** Refer to the `student` table.
+* **Instructors:** Refer to the `teacher` table.
+* **Administrators:** Refer to the `users` table.
